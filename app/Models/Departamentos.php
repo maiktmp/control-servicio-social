@@ -31,6 +31,11 @@ class Departamentos extends Model
 {
     protected $table = "departamentos";
 
+    protected $fillable=[
+        'nombre',
+        'jefe',
+        'grado',
+    ];
     /**
      * @return \Illuminate\Support\Collection
      */

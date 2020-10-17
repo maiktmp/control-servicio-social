@@ -16,9 +16,6 @@ class CreateAlumnosInternosTable extends Migration
         Schema::create('alumnos_internos', function (Blueprint $table) {
             $table->id();
             $table->string('no_ctl',20);
-            $table->string('ap_p',255);
-            $table->string('ap_m',255);
-            $table->string('nombre',255);
             $table->string('carrera',255);
             $table->integer('semestre');
             $table->string('no_of',20);

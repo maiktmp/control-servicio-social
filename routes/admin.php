@@ -60,3 +60,62 @@ Route::get(
     '/departments',
     'DeptoController@index'
 )->name("admin_departments_index");
+
+Route::get(
+    'departments/create',
+    'DeptoController@create'
+)->name("admin_departments_create");
+
+Route::post(
+    'departments/create',
+    'DeptoController@createPost'
+)->name("admin_departments_create_post");
+
+Route::get(
+    'departments/{deptoId}/update',
+    'DeptoController@update'
+)->name("admin_departments_update");
+
+Route::post(
+    'departments/{deptoId}/update',
+    'DeptoController@updatePost'
+)->name("admin_departments_update_post");
+
+Route::get(
+    'departments/{deptoId}/delete',
+    'DeptoController@delete'
+)->name("admin_departments_delete");
+
+// ===================
+//      Internal Student
+// ===================
+
+Route::get(
+    '/internal-students',
+    'InternalStudentController@index'
+)->name("admin_internal_student_index");
+
+Route::get(
+    'internal-student/create',
+    'InternalStudentController@create'
+)->name("admin_internal_student_create");
+
+Route::post(
+    'internal-student/create',
+    'InternalStudentController@createPost'
+)->name("admin_internal_student_create_post");
+
+Route::get(
+    'internal-student/{studentId}/update',
+    'InternalStudentController@update'
+)->name("admin_internal_student_update");
+
+Route::post(
+    'internal-student/{studentId}/update',
+    'InternalStudentController@updatePost'
+)->name("admin_internal_student_update_post");
+
+Route::get(
+    'internal-student/{studentId}/delete',
+    'InternalStudentController@delete'
+)->name("admin_internal_student_delete");

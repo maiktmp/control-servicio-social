@@ -45,6 +45,7 @@ class Users extends Model
         "ap_p",
         "ap_m",
         "tipo_usr",
+        "nombre",
     ];
 
     public function departamento()

@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $no_ctl
- * @property string $ap_p
- * @property string $ap_m
- * @property string $nombre
  * @property string $carrera
  * @property int $semestre
  * @property string $no_of
@@ -39,4 +36,20 @@ use Illuminate\Database\Eloquent\Model;
 class AlumnosInternos extends Model
 {
     protected $table = "alumnos_internos";
+
+    protected $fillable = [
+        "no_ctl",
+        "carrera",
+        "semestre",
+        "no_of",
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(
+            Users::class,
+            "user_id",
+            "id"
+        );
+    }
 }

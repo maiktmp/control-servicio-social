@@ -3,16 +3,16 @@
 @section("content")
     <div class="row">
         <div class="col text-center text-center">
-            <h2>Departamentos</h2>
+            <h2>Alumnos Internos</h2>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12 text-right">
-            <a href="{{route("admin_departments_create")}}"
+            <a href="{{route("admin_internal_student_create")}}"
                class="btn btn-outline-success"
                role="button"
-               aria-pressed="true">Crear Departamento</a>
+               aria-pressed="true">Crear alumno</a>
         </div>
     </div>
 
@@ -23,20 +23,22 @@
                     <thead>
                     <tr>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Jefe</th>
-                        <th scope="col">Grado</th>
+                        <th scope="col">No. Control</th>
+                        <th scope="col">Semestre</th>
+                        <th scope="col">Número de oficio</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse ($departamentos as $depto)
+                    @forelse ($students as $student)
                         <tr>
-                            <td>{{$depto->nombre}}</td>
-                            <td>{{$depto->jefe}}</td>
-                            <td>{{$depto->grado}}</td>
+                            <td>{{$student->user->nombre}} {{$student->user->ap_p}} {{$student->user->ap_m}}</td>
+                            <td>{{$student->no_ctl}}</td>
+                            <td>{{$student->semestre}}</td>
+                            <td>{{$student->no_of}}</td>
                             <td class="text-center d-flex justify-content-center">
 
-                                <a href="{{route("admin_departments_update",["deptoId"=>$depto->id])}}"
+                                <a href="{{route("admin_internal_student_update",["studentId"=>$student->id])}}"
                                    class="btn btn-outline-success text-center d-flex justify-content-center m-1"
                                    role="button"
                                    data-toggle="tooltip"
@@ -44,14 +46,13 @@
                                    title="Editar"
                                    aria-pressed="true"> <i class="material-icons md-18">create</i> </a>
 
-                                <a href="{{route("admin_departments_delete",["deptoId"=>$depto->id])}}"
+                                <a href="{{route("admin_internal_student_delete",["studentId"=>$student->id])}}"
                                    class="btn btn-outline-danger text-center d-flex justify-content-center m-1"
                                    role="button"
                                    data-toggle="tooltip"
                                    data-placement="top"
                                    title="Eliminar"
                                    aria-pressed="true"> <i class="material-icons md-18">delete</i> </a>
-
 
                             </td>
                         </tr>
@@ -62,7 +63,7 @@
                     @endforelse
                     </tbody>
                 </table>
-                {{ $departamentos->links() }}
+                {{ $students->links() }}
             </div>
         </div>
     </div>
