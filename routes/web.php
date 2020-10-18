@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::view(
+    '/login',
+    'login'
+)->name("login")->middleware('guest');
+
+Route::post(
+    'login',
+    'Auth\LoginController@authenticate'
+)->name('login.auth');
+
+Route::get(
+    'logout',
+    'Auth\LoginController@logout'
+)->name('logout');
+
+Route::get('/home', 'HomeController@index')->name('home');

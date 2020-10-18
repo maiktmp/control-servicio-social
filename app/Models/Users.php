@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * App\Models\Users
@@ -35,7 +36,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Users whereUsername($value)
  */
-class Users extends Model
+class Users extends Authenticatable
 {
     protected $table = "users";
     protected $fillable = [

@@ -27,6 +27,7 @@ class InternalStudentController extends Controller
     {
         try {
             \DB::beginTransaction();
+
             $user = new Users();
             $user->fill($req->input("user"));
             $user->password = bcrypt($user->password);
@@ -39,7 +40,6 @@ class InternalStudentController extends Controller
             $student->status = true;
             $student->user_id = $user->id;
             $student->saveOrFail();
-
 
             \DB::commit();
             return response()->redirectToRoute("admin_internal_student_index");
