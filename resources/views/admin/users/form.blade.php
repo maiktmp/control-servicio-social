@@ -38,7 +38,7 @@
     <div class="col-12 col-md-4">
         <div class="form-group">
 
-            <label>Usario</label>
+            <label>Usuario</label>
             <input type="text"
                    name="username" value="{{$user->username ?? ""}}"
                    class="form-control"
