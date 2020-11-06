@@ -55,6 +55,5 @@ class Laboratoristas extends Model
             "id"
         );
     }
-
 }
 

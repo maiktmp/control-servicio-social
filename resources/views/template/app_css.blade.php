@@ -14,5 +14,6 @@
       rel="stylesheet">
 
 <!-- Template Main CSS File -->
+<link href="{!! asset('/vendor/icofont/icofont.min.css') !!}" rel="stylesheet">
 <link href="{!! asset('owl.carousel/assets/owl.carousel.css') !!}" rel="stylesheet">
 <link href="{!! asset('css/style.css') !!}" rel="stylesheet">

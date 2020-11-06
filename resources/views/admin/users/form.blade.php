@@ -52,9 +52,9 @@
             <label>Rol</label>
             <select name="tipo_usr" class="form-control">
                 <option value="1">Admin</option>
-                <option value="2">Laboratorista</option>
-                <option value="3">Interno</option>
-                <option value="4">Externo</option>
+{{--                <option value="2">Laboratorista</option>--}}
+{{--                <option value="3">Interno</option>--}}
+{{--                <option value="4">Externo</option>--}}
             </select>
         </div>
     </div>
@@ -68,7 +68,7 @@
                 @empty
                     <option value="0">Sin departamentos</option>
                 @endforelse
-                
+
             </select>
         </div>
     </div>

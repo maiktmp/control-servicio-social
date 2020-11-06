@@ -6,6 +6,15 @@
             <h2>Identifícate</h2>
         </div>
     </div>
+    <div class="row">
+        <div class="col-5 m-auto">
+            @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    {{$errors->first()}}
+                </div>
+            @endif
+        </div>
+    </div>
 
     <form action="" autocomplete="off" method="post">
         @csrf

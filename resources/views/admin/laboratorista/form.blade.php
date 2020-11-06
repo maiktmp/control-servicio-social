@@ -58,13 +58,13 @@
     <div class="col-12 col-md-4">
         <div class="form-group">
             <label>Departamento</label>
-            <select name="departamento_id" class="form-control">
+            <select name="user[departamento_id]" class="form-control">
                 @forelse(\App\Models\Departamentos::mapData() as $deptoId => $deptoName)
                     <option value="{{$deptoId}}">{{$deptoName}}</option>
                 @empty
                     <option value="0">Sin departamentos</option>
                 @endforelse
-                
+
             </select>
         </div>
     </div>

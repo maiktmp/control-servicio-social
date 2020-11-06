@@ -23,6 +23,7 @@ class UserController extends Controller
 
     public function createPost(Request $req)
     {
+
         $user = new Users();
         $user->fill($req->all());
         $user->password = bcrypt($user->password);

@@ -46,6 +46,7 @@ class Users extends Authenticatable
         "ap_m",
         "tipo_usr",
         "nombre",
+        "departamento_id",
     ];
 
     public function departamento()

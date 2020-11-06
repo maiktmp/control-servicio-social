@@ -13,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    'HomeController@index'
+);
 
+Route::get(
+    '/home',
+    'HomeController@index'
+)->name('home');
 
 Route::view(
     '/login',
@@ -33,4 +38,4 @@ Route::get(
     'Auth\LoginController@logout'
 )->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
