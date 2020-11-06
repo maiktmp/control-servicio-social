@@ -90,9 +90,9 @@
     <div class="col-12 col-md-4">
         <div class="form-group">
 
-            <label>No. Control</label>
+            <label>Matrícula</label>
             <input type="text"
-                   name="no_ctl" value="{{$student->no_ctl ?? ""}}"
+                   name="matricula" value="{{$student->matricula ?? ""}}"
                    class="form-control"
                    required>
         </div>
@@ -101,20 +101,9 @@
     <div class="col-12 col-md-4">
         <div class="form-group">
 
-            <label>Carrera</label>
+            <label>Procedencia</label>
             <input type="text"
-                   name="carrera" value="{{$student->carrera ?? ""}}"
-                   class="form-control"
-                   required>
-        </div>
-    </div>
-
-    <div class="col-12 col-md-4">
-        <div class="form-group">
-
-            <label>Semestre</label>
-            <input type="number"
-                   name="semestre" value="{{$student->semestre ?? ""}}"
+                   name="procedencia" value="{{$student->procedencia ?? ""}}"
                    class="form-control"
                    required>
         </div>

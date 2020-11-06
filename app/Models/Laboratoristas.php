@@ -34,4 +34,27 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratoristas extends Model
 {
     protected $table = "laboratoristas";
+    protected $fillable = [
+        'departamento_id',
+        'user_id',
+    ];
+
+     public function departamento()
+    {
+        return $this->belongsTo(
+            Departamentos::class,
+            "departamento_id",
+            "id"
+        );
+    }
+    public function user()
+    {
+        return $this->belongsTo(
+            Users::class,
+            "user_id",
+            "id"
+        );
+    }
+
 }
+

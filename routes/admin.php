@@ -119,3 +119,73 @@ Route::get(
     'internal-student/{studentId}/delete',
     'InternalStudentController@delete'
 )->name("admin_internal_student_delete");
+
+
+// ===================
+//      External Student
+// ===================
+
+Route::get(
+    '/external-students',
+    'ExternalStudentController@index'
+)->name("admin_external_student_index");
+
+Route::get(
+    'external-student/create',
+    'ExternalStudentController@create'
+)->name("admin_external_student_create");
+
+Route::post(
+    'external-student/create',
+    'externalStudentController@createPost'
+)->name("admin_external_student_create_post");
+
+Route::get(
+    'external-student/{studentId}/update',
+    'ExternalStudentController@update'
+)->name("admin_external_student_update");
+
+Route::post(
+    'external-student/{studentId}/update',
+    'ExternalStudentController@updatePost'
+)->name("admin_external_student_update_post");
+
+Route::get(
+    'external-student/{studentId}/delete',
+    'ExternalStudentController@delete'
+)->name("admin_external_student_delete");
+
+// ===================
+//      Laboratoristas
+// ===================
+
+Route::get(
+    '/laboratorista',
+    'LaboratoristaController@index'
+)->name("admin_laboratorista_index");
+
+Route::get(
+    'laboratorista/create',
+    'LaboratoristaController@create'
+)->name("admin_laboratorista_create");
+
+Route::post(
+    'laboratorista/create',
+    'LaboratoristaController@createPost'
+)->name("admin_laboratorista_create_post");
+
+Route::get(
+    'laboratorista/{laboId}/update',
+    'laboratoristaController@update'
+)->name("admin_laboratorista_update");
+
+Route::post(
+    'laboratorista/{laboId}/update',
+    'LaboratoristaController@updatePost'
+)->name("admin_laboratorista_update_post");
+
+Route::get(
+    'laboratorista/{laboId}/delete',
+    'LaboratoristaController@delete'
+)->name("admin_laboratorista_delete");
+

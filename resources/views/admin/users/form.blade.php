@@ -68,6 +68,7 @@
                 @empty
                     <option value="0">Sin departamentos</option>
                 @endforelse
+                
             </select>
         </div>
     </div>

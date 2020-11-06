@@ -3,7 +3,7 @@
 @section("content")
     <div class="row">
         <div class="col text-center text-center">
-            <h2>Login</h2>
+            <h2>Identifícate</h2>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" type="submit">Login</button>
+                <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
             </div>
         </div>
     </form>

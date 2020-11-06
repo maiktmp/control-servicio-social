@@ -40,7 +40,6 @@ class Users extends Authenticatable
 {
     protected $table = "users";
     protected $fillable = [
-        "departamento_id",
         "username",
         "password",
         "ap_p",

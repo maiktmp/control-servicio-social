@@ -39,4 +39,19 @@ use Illuminate\Database\Eloquent\Model;
 class AlumnosExternos extends Model
 {
     protected $table = "alumnos_externos";
+
+    protected $fillable = [
+        "matricula",
+        "procedencia",
+        "no_of",
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(
+            Users::class,
+            "user_id",
+            "id"
+        );
+    }
 }
