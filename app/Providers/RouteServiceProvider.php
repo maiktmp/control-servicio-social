@@ -16,6 +16,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
     protected $namespaceAdmin = 'App\Http\Controllers\Admin';
+    protected $namespaceLabo = 'App\Http\Controllers\Labo';
+    protected $namespaceInternal = 'App\Http\Controllers\Internal';
+    protected $namespaceExternal = 'App\Http\Controllers\External';
 
     /**
      * The path to the "home" route for your application.
@@ -48,6 +51,9 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapAdminRoutes();
+        $this->mapLaboRoutes();
+        $this->mapInternalRoutes();
+        $this->mapExternalRoutes();
 
         //
     }
@@ -72,6 +78,30 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespaceAdmin)
             ->prefix("admin")
             ->group(base_path('routes/admin.php'));
+    }
+
+    protected function mapLaboRoutes()
+    {
+        Route::middleware('web', 'auth')
+            ->namespace($this->namespaceLabo)
+            ->prefix("laboratorista")
+            ->group(base_path('routes/labo.php'));
+    }
+
+    protected function mapInternalRoutes()
+    {
+        Route::middleware('web', 'auth')
+            ->namespace($this->namespaceAdmin)
+            ->prefix("interno")
+            ->group(base_path('routes/internal.php'));
+    }
+
+    protected function mapExternalRoutes()
+    {
+        Route::middleware('web', 'auth')
+            ->namespace($this->namespaceAdmin)
+            ->prefix("externo")
+            ->group(base_path('routes/external.php'));
     }
 
     /**

@@ -35,7 +35,7 @@
                 <div class="form-group">
 
                     <label>Contraseña</label>
-                    <input type="text"
+                    <input type="password"
                            name="password"
                            class="form-control"
                            required>
@@ -49,5 +49,6 @@
             </div>
         </div>
     </form>
+
 
 @endsection

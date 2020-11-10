@@ -57,14 +57,29 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($loginParams, $remember)) {
+            $user = Auth::user();
+            switch ($user->rol) {
+                 case 0:
+                $user->rol == 1;
+                redirect()->intended(route('home_admin'));
+                break;
 
-            // Switch
-            // $user->rol
-            // $user->rol === 1 => home_admin
-            // $user->rol === 2 => student_admin
-            // $user->rol === 3 => laboratorista_admin
+                 case 1:
+                 $user->rol == 2;
+                  redirect()->intended(route('home_labo'));
+                break;
 
-            return redirect()->intended(route('home_admin'));
+                 case 2:
+                 $user->rol == 3;
+                redirect()->intended(route('home_internal'));
+                break;
+
+                break;
+                 case 3:
+                 $user->rol == 4;
+                 redirect()->intended(route('home_external'));
+                break;
+            }
         } else {
             return back()
                 ->withErrors((['email' => 'Email o contraseña incorrectos.']))
