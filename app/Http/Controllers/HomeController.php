@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -16,14 +18,17 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-
-        return view('welcome');
+        $user = Auth::user();
+        switch ($user->tipo_usr) {
+            case Rol::Admin:
+                return redirect()->intended(route('home_admin'));
+            case Rol::Externo:
+            case Rol::Interno:
+                return redirect()->intended(route('home_student'));
+            case Rol::Laboratorista:
+                return redirect()->intended(route('home_labo'));
+        }
     }
 }

@@ -18,8 +18,8 @@ class CreateRegistrosInternosTable extends Migration
             $table->time('hr_ent',4);
             $table->time('hr_sal',4);
             $table->integer('hr_totales');
-            $table->integer('check');
-            $table->string('comentarios',800);
+            $table->integer('check')->nullable();
+            $table->string('comentarios',800)->nullable();
             $table->foreignid('id_int')->references('id')->on('alumnos_internos');
             $table->integer('status');
             $table->timestamps();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rol;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')
-               ->except('logout');
+            ->except('logout');
     }
 
     public function username()
@@ -58,28 +59,19 @@ class LoginController extends Controller
 
         if (Auth::attempt($loginParams, $remember)) {
             $user = Auth::user();
-            switch ($user->rol) {
-                 case 0:
-                $user->rol == 1;
-                redirect()->intended(route('home_admin'));
-                break;
-
-                 case 1:
-                 $user->rol == 2;
-                  redirect()->intended(route('home_labo'));
-                break;
-
-                 case 2:
-                 $user->rol == 3;
-                redirect()->intended(route('home_internal'));
-                break;
-
-                break;
-                 case 3:
-                 $user->rol == 4;
-                 redirect()->intended(route('home_external'));
-                break;
+            switch ($user->tipo_usr) {
+                case Rol::Admin:
+                    return redirect()->intended(route('home_admin'));
+                case Rol::Externo:
+                case Rol::Interno:
+                    return redirect()->intended(route('home_student'));
+                case Rol::Laboratorista:
+                    return redirect()->intended(route('home_labo'));
             }
+
+            return back()
+                ->withErrors((['email' => 'Email o contraseña incorrectos.']))
+                ->withInput();
         } else {
             return back()
                 ->withErrors((['email' => 'Email o contraseña incorrectos.']))

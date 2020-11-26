@@ -189,3 +189,21 @@ Route::get(
     'LaboratoristaController@delete'
 )->name("admin_laboratorista_delete");
 
+// ===================
+//      Checks
+// ===================
+
+Route::get(
+    '/checks',
+    'CheckController@index'
+)->name("admin_checks_index");
+
+Route::post(
+    '/{registerId}/create-comment',
+    'CheckController@createComments'
+)->name("admin_comment_create");
+
+Route::post(
+    '/{registerId}/check-register',
+    'CheckController@checkRegister'
+)->name("admin_check_register");

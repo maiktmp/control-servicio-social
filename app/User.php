@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\AlumnosExternos;
+use App\Models\AlumnosInternos;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -68,4 +70,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function interno()
+    {
+        return $this->hasOne(
+            AlumnosInternos::class,
+            "user_id",
+            "id"
+        );
+    }
+
+    public function externo()
+    {
+        return $this->belongsTo(
+            AlumnosExternos::class,
+            "user_id",
+            "id"
+        );
+    }
 }

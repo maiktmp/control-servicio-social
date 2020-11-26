@@ -17,8 +17,7 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
     protected $namespaceAdmin = 'App\Http\Controllers\Admin';
     protected $namespaceLabo = 'App\Http\Controllers\Labo';
-    protected $namespaceInternal = 'App\Http\Controllers\Internal';
-    protected $namespaceExternal = 'App\Http\Controllers\External';
+    protected $namespaceStudent = 'App\Http\Controllers\Student';
 
     /**
      * The path to the "home" route for your application.
@@ -51,10 +50,10 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapAdminRoutes();
-        $this->mapLaboRoutes();
-        $this->mapInternalRoutes();
-        $this->mapExternalRoutes();
 
+        $this->mapLaboRoutes();
+
+        $this->mapStudentRoutes();
         //
     }
 
@@ -74,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAdminRoutes()
     {
-        Route::middleware('web', 'auth')
+        Route::middleware('web', 'auth','checkAdmin')
             ->namespace($this->namespaceAdmin)
             ->prefix("admin")
             ->group(base_path('routes/admin.php'));
@@ -82,26 +81,19 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapLaboRoutes()
     {
-        Route::middleware('web', 'auth')
+        Route::middleware('web', 'auth','checkLabo')
             ->namespace($this->namespaceLabo)
             ->prefix("laboratorista")
             ->group(base_path('routes/labo.php'));
     }
 
-    protected function mapInternalRoutes()
-    {
-        Route::middleware('web', 'auth')
-            ->namespace($this->namespaceAdmin)
-            ->prefix("interno")
-            ->group(base_path('routes/internal.php'));
-    }
 
-    protected function mapExternalRoutes()
+    protected function mapStudentRoutes()
     {
-        Route::middleware('web', 'auth')
-            ->namespace($this->namespaceAdmin)
-            ->prefix("externo")
-            ->group(base_path('routes/external.php'));
+        Route::middleware('web', 'auth','checkStudent')
+            ->namespace($this->namespaceStudent)
+            ->prefix("student")
+            ->group(base_path('routes/students.php'));
     }
 
     /**

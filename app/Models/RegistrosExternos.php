@@ -36,4 +36,14 @@ use Illuminate\Database\Eloquent\Model;
 class RegistrosExternos extends Model
 {
     protected $table = "registros_externos";
+    protected $dates = ["hr_ent","hr_sal"];
+
+
+    public function student(){
+        return $this->belongsTo(
+            AlumnosExternos::class,
+            "id_ext",
+            "id"
+        );
+    }
 }

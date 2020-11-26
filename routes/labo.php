@@ -14,7 +14,55 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('laboratorista/bienvenida');
+    return view('laboratorista.bienvenida');
 })->name("home_labo");
 
 
+
+// ===================
+//      Internal Student
+// ===================
+
+Route::get(
+    '/internal-students',
+    'InternalStudentController@index'
+)->name("labo_internal_student_index");
+
+// ===================
+//      External Student
+// ===================
+
+Route::get(
+    '/external-students',
+    'ExternalStudentController@index'
+)->name("labo_external_student_index");
+
+
+// ===================
+//      Departamentos
+// ===================
+
+
+Route::get(
+    '/departments',
+    'DeptoController@index'
+)->name("labo_departments_index");
+
+// ===================
+//      Checks
+// ===================
+
+Route::get(
+    '/checks',
+    'CheckController@index'
+)->name("labo_checks_index");
+
+Route::post(
+    '/{registerId}/create-comment',
+    'CheckController@createComments'
+)->name("labo_comment_create");
+
+Route::post(
+    '/{registerId}/check-register',
+    'CheckController@checkRegister'
+)->name("labo_check_register");
