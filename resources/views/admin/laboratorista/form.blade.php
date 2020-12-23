@@ -13,7 +13,7 @@
 
             <label>Nombre</label>
             <input type="text"
-                   name="user[nombre]" value="{{$labo->user->nombre ?? ""}}"
+                   name="user[nombre]" value='{{$labo->user->nombre ?? old("user.nombre")}}'
                    class="form-control"
                    required>
         </div>
@@ -24,7 +24,7 @@
 
             <label>Apellido Paterno</label>
             <input type="text"
-                   name="user[ap_p]" value="{{$labo->user->ap_p ?? ""}}"
+                   name="user[ap_p]" value='{{$labo->user->ap_p ?? old("user.ap_p")}}'
                    class="form-control"
                    required>
         </div>
@@ -35,20 +35,7 @@
 
             <label>Apellido Materno</label>
             <input type="text"
-                   name="user[ap_m]" value="{{$labo->user->ap_m ?? ""}}"
-                   class="form-control"
-                   required>
-
-        </div>
-    </div>
-
-
-    <div class="col-12 col-md-4">
-        <div class="form-group">
-
-            <label>Usuario</label>
-            <input type="text"
-                   name="user[username]" value="{{$labo->user->username ?? ""}}"
+                   name="user[ap_m]" value='{{$labo->user->ap_m ?? old("user.ap_m")}}'
                    class="form-control"
                    required>
 
@@ -68,20 +55,47 @@
             </select>
         </div>
     </div>
+</div>
 
+
+<div class="row">
+  <div class="col-12 col-md-4">
+        <div class="form-group">
+
+            <label>Usuario</label>
+            <input type="text"
+                   name="username" value='{{$labo->user->username ?? old("labo.username")}}'
+                   class="form-control"
+                   required>
+
+        </div>
+    </div>
 
     <div class="col-12 col-md-4">
         <div class="form-group">
             <label>Contraseña</label>
             <input type="password"
-                   name="user[password]"
+                   name="password"
                    class="form-control">
-            @isset($labo)
+            @isset($student)
                 <small id="passwordHelpBlock" class="form-text text-muted">
                     Si desea conservar la contraseña, deje en blanco este campo.
                 </small>
             @endisset
         </div>
     </div>
-
-</div>
+    
+    <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label>Confirmar Contraseña</label>
+            <input type="password"
+                   name="password_confirmation"
+                   class="form-control">
+            @isset($user)
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                    Si desea conservar la contraseña, deje en blanco este campo.
+                </small>
+            @endisset
+        </div>
+    </div>
+  </div>

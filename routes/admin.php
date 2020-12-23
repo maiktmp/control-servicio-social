@@ -87,6 +87,16 @@ Route::get(
 )->name("admin_departments_delete");
 
 // ===================
+//      Carreras
+// ===================
+
+
+Route::get(
+    '/carreras',
+    'CarrerasController@index'
+)->name("admin_carreras_index");
+
+// ===================
 //      Internal Student
 // ===================
 

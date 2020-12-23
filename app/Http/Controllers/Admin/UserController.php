@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserCreatePostRequest;
+use App\Http\Requests\UserUpdatePostRequest;
+
 
 class UserController extends Controller
 {
@@ -21,9 +24,9 @@ class UserController extends Controller
         return view("admin.users.create");
     }
 
-    public function createPost(Request $req)
+    public function createPost(UserCreatePostRequest $req)
     {
-
+       
         $user = new Users();
         $user->fill($req->all());
         $user->password = bcrypt($user->password);
@@ -38,7 +41,7 @@ class UserController extends Controller
         return view("admin.users.update", ["user" => $user]);
     }
 
-    public function updatePost(Request $req, $userId)
+    public function updatePost(UserUpdatePostRequest $req, $userId)
     {
         $user = Users::find($userId);
         $oldPassword = $user->password;

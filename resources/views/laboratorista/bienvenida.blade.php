@@ -32,6 +32,12 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 icon-box">
+                    <div class="icon"><i class="icofont-education"></i></div>
+                    <h4 class="title"><a href="{!! route("labo_carreras_index")!!}">Oferta educativa</a></h4>
+                    <p class="description">Consulte las carreras y sus coordinadores</p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 icon-box">
                     <div class="icon"><i class="icofont-checked"></i></div>
                     <h4 class="title"><a href="{!! route("labo_checks_index",["type"=>"internal"])!!}">Chequeo de registros internos</a></h4>
                     <p class="description">Revise los registros realizados por los alumnos internos en sus horas de servicio social</p>

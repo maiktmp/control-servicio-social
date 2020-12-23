@@ -12,7 +12,7 @@
             <a href="{{route("admin_users_create")}}"
                class="btn btn-outline-success"
                role="button"
-               aria-pressed="true">Crear usuario</a>
+               aria-pressed="true">Crear nuevo administrador</a>
         </div>
     </div>
 

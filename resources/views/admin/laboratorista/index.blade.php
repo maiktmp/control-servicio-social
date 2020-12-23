@@ -23,6 +23,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Nombre Completo</th>
+                        <th scope="col">Departamento</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -30,6 +31,8 @@
                     @forelse ($labos as $labo)
                         <tr>
                             <td>{{$labo->user->nombre}} {{$labo->user->ap_p}} {{$labo->user->ap_m}}</td>
+                            <td>{{$labo->user->departamento->nombre}}</td>
+                            
                             <td class="text-center d-flex justify-content-center">
 
                                 <a href="{{route("admin_laboratorista_update",["laboId"=>$labo->id])}}"

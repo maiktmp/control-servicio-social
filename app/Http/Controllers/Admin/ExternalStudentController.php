@@ -7,6 +7,8 @@ use App\Models\AlumnosExternos;
 use App\Models\Rol;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use App\Http\Requests\ExternalCreatePostRequest;
+use App\Http\Requests\ExternalUpdatePostRequest;
 
 class ExternalStudentController extends Controller
 {
@@ -23,7 +25,7 @@ class ExternalStudentController extends Controller
         return view("admin.external_student.create");
     }
 
-    public function createPost(Request $req)
+    public function createPost(ExternalCreatePostRequest $req)
     {
         try {
             \DB::beginTransaction();
@@ -55,7 +57,7 @@ class ExternalStudentController extends Controller
         return view("admin.external_student.update", ["student" => $student]);
     }
 
-    public function updatePost(Request $req, $studentId)
+    public function updatePost(ExternalUpdatePostRequest $req, $studentId)
     {
         try {
             \DB::beginTransaction();

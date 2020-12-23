@@ -34,7 +34,8 @@
             </li>
 
             @auth
-                <li class="nav-item"><a href="{!! route('logout') !!}">Cerrar sesión</a></li>
+                <li class="nav-item"><a href="{!! route('home')!!}">|  INICIO  | </a></li>
+                <li class="nav-item"><a href="{!! route('logout') !!}">|  Cerrar sesión  |</a></li>
             @endauth
 
         </ul>

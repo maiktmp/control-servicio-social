@@ -1,20 +1,9 @@
 @extends("template.main")
 
-
 @push("scripts")
-
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-
-        // JQuery ->  Selectores https://www.w3schools.com/jquery/jquery_ref_selectors.asp
-        // Ajax  -> https://api.jquery.com/jquery.post/
-        // Prevet Default -> https://developer.mozilla.org/es/docs/Web/API/Event/preventDefault
-        // MomentJs  (Fechas & Horas)  -> https://momentjs.com/
-        // Carbon  (Fechas & Horas) -> https://styde.net/componente-carbon-fechas-laravel-5/
-        // Modal  (Bootstrap) -> https://getbootstrap.com/docs/4.0/components/modal/
-        // Events  (JQuery) -> https://www.w3schools.com/jquery/jquery_ref_events.asp
 
         $(document).ready(function ($q) {
 
@@ -62,10 +51,10 @@
             });
         });
     </script>
-
 @endpush
 
 @section("content")
+
     <div class="row">
         <div class="col text-center text-center">
             <h2>Registros {{ $type==="internal" ? "Internos" : "Externos"  }} </h2>

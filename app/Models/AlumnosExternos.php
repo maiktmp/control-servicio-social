@@ -42,6 +42,7 @@ class AlumnosExternos extends Model
 
     protected $fillable = [
         "matricula",
+        "periodo",
         "procedencia",
         "no_of",
     ];

@@ -49,6 +49,16 @@ Route::get(
 )->name("labo_departments_index");
 
 // ===================
+//      Carreras
+// ===================
+
+
+Route::get(
+    '/carreras',
+    'CarrerasController@index'
+)->name("labo_carreras_index");
+
+// ===================
 //      Checks
 // ===================
 

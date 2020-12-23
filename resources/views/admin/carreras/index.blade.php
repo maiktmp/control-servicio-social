@@ -3,33 +3,25 @@
 @section("content")
     <div class="row">
         <div class="col text-center text-center">
-            <h2>Alumnos Internos</h2>
+            <h2>Oferta educativa</h2>
         </div>
     </div>
-
-
     <div class="row mt-4">
         <div class="col-12">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Nombre Completo</th>
-                        <th scope="col">No. Control</th>
-                        <th scope="col">Carrera</th>
-                        <th scope="col">Semestre</th>
-                        <th scope="col">Número de oficio</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Coordinador</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse ($students as $student)
+                    @forelse ($carreras as $car)
                         <tr>
-                            <td>{{$student->user->nombre}} {{$student->user->ap_p}} {{$student->user->ap_m}}</td>
-                            <td>{{$student->no_ctl}}</td>
-                            <td>{{$student->carrera->nombre}}</td>
-                            <td>{{$student->semestre}}</td>
-                            <td>{{$student->no_of}}</td>
-
+                            <td>{{$car->nombre}}</td>
+                            <td>{{$car->coordinador}}</td>
                         </tr>
                     @empty
                         <tr>
@@ -38,7 +30,7 @@
                     @endforelse
                     </tbody>
                 </table>
-                {{ $students->links() }}
+                {{ $carreras->links() }}
             </div>
         </div>
     </div>

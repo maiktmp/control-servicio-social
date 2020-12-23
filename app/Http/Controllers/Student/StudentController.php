@@ -50,7 +50,7 @@ class StudentController extends Controller
             $register->status = 1;
             $register->save();
             return response()->json([
-                "message" => "Registro de entrada realizado satisfactoriamente"
+                "message" => "Registro de entrada realizado satisfactoriamente, por favor cierra sesión"
             ]);
         }
     }
@@ -80,7 +80,7 @@ class StudentController extends Controller
             $register->status = 1;
             $register->save();
             return response()->json([
-                "message" => "Registro de entrada realizado satisfactoriamente"
+                "message" => "Registro de entrada realizado satisfactoriamente, por favor cierra sesión"
             ]);
         }
     }

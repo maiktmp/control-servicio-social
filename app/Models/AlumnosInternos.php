@@ -39,9 +39,10 @@ class AlumnosInternos extends Model
 
     protected $fillable = [
         "no_ctl",
-        "carrera",
+        "periodo",
         "semestre",
         "no_of",
+        "carrera_id"
     ];
 
     public function user()
@@ -49,6 +50,14 @@ class AlumnosInternos extends Model
         return $this->belongsTo(
             Users::class,
             "user_id",
+            "id"
+        );
+    }
+    public function carrera()
+    {
+        return $this->belongsTo(
+            Carreras::class,
+            "carrera_id",
             "id"
         );
     }

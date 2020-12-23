@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Laboratoristas;
 use App\Models\Rol;
 use App\Models\Users;
-use Illuminate\Http\Request;
+use App\Http\Requests\LaboCreatePostRequest;
+use App\Http\Requests\LaboUpdatePostRequest;
 
 class LaboratoristaController extends Controller
 {
@@ -23,11 +24,10 @@ class LaboratoristaController extends Controller
         return view("admin.laboratorista.create");
     }
 
-    public function createPost(Request $req)
+    public function createPost(LaboCreatePostRequest $req)
     {
         try {
             \DB::beginTransaction();
-
             $user = new Users();
             $user->fill($req->input("user"));
             $user->password = bcrypt($user->password);
@@ -55,7 +55,7 @@ class LaboratoristaController extends Controller
         return view("admin.laboratorista.update", ["labo" => $labo]);
     }
 
-    public function updatePost(Request $req, $laboId)
+    public function updatePost(LaboUpdatePostRequest $req, $laboId)
     {
         try {
             \DB::beginTransaction();

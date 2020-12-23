@@ -38,6 +38,11 @@
             <h4 class="title"><a href="{!! asset('admin/departments/')!!}">Departamentos</a></h4>
             <p class="description">Consulte y administre los departamentos registrados</p>
           </div>
+           <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="icofont-education"></i></div>
+            <h4 class="title"><a href="{!! asset('admin/carreras/')!!}">Oferta educativa</a></h4>
+            <p class="description">Consulte las carreras disponibles</p>
+          </div>
             <div class="col-lg-4 col-md-6 icon-box">
                 <div class="icon"><i class="icofont-checked"></i></div>
                 <h4 class="title"><a href="{!! route("admin_checks_index",["type"=>"internal"])!!}">Chequeo de registros internos</a></h4>

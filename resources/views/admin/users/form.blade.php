@@ -1,3 +1,13 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="row">
 
     <div class="col-12 col-md-4">
@@ -5,7 +15,7 @@
 
             <label>Nombre</label>
             <input type="text"
-                   name="nombre" value="{{$user->nombre ?? ""}}"
+                   name="nombre" value='{{$user->nombre ?? old("user.nombre")}}'
                    class="form-control"
                    required>
         </div>
@@ -16,7 +26,7 @@
 
             <label>Apellido Paterno</label>
             <input type="text"
-                   name="ap_p" value="{{$user->ap_p ?? ""}}"
+                   name="ap_p" value='{{$user->ap_p ?? old("user.ap_p")}}'
                    class="form-control"
                    required>
         </div>
@@ -27,20 +37,7 @@
 
             <label>Apellido Materno</label>
             <input type="text"
-                   name="ap_m" value="{{$user->ap_m ?? ""}}"
-                   class="form-control"
-                   required>
-
-        </div>
-    </div>
-
-
-    <div class="col-12 col-md-4">
-        <div class="form-group">
-
-            <label>Usuario</label>
-            <input type="text"
-                   name="username" value="{{$user->username ?? ""}}"
+                   name="ap_m" value='{{$user->ap_m ?? old("user.ap_m")}}'
                    class="form-control"
                    required>
 
@@ -73,12 +70,39 @@
         </div>
     </div>
 
+</div>
 
+    <div class="row">
+        <div class="col-12 col-md-4">
+        <div class="form-group">
+
+            <label>Usuario</label>
+            <input type="text"
+                   name="username" value='{{$user->username ?? old("user.username")}}'
+                   class="form-control"
+                   required>
+
+        </div>
+    </div>
     <div class="col-12 col-md-4">
         <div class="form-group">
             <label>Contraseña</label>
             <input type="password"
                    name="password"
+                   class="form-control">
+            @isset($user)
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                    Si desea conservar la contraseña, deje en blanco este campo.
+                </small>
+            @endisset
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label>Confirmar Contraseña</label>
+            <input type="password"
+                   name="password_confirmation"
                    class="form-control">
             @isset($user)
                 <small id="passwordHelpBlock" class="form-text text-muted">

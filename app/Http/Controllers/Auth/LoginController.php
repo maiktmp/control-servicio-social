@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rol;
+use App\Models\Users;
+use App\Models\Laboratoristas;
+use App\Models\AlumnosExternos;
+use App\Models\AlumnosInternos;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -56,6 +60,30 @@ class LoginController extends Controller
             'password' => $request->input('password'),
             'status' => 1
         ];
+
+        $userattempt= Users::whereUsername($request->input('username'))->first();
+        
+        /*
+        if ($userattempt ==! null ) {
+            switch ($userattempt->tipo_usr) {
+                case Rol::Externo:
+                    $external = AlumnosExternos::whereUserId($userattempt->id)->first();
+                    if(!$external->active) return back()
+                ->withErrors((['email' => 'Usuario deshabilitado']))
+                ->withInput();
+                case Rol::Interno:
+                    $internal = AlumnosInternos::whereUserId($userattempt->id)->first();
+                    if(!$internal->active) return back()
+                ->withErrors((['email' => 'Usuario deshabilitado']))
+                ->withInput();
+                case Rol::Laboratorista:
+                    $labo = Laboratoristas::whereUserId($userattempt->id)->first();
+                    if(!$labo->active) return back()
+                ->withErrors((['email' => 'Usuario deshabilitado']))
+                ->withInput();
+            }
+        }
+        */ 
 
         if (Auth::attempt($loginParams, $remember)) {
             $user = Auth::user();

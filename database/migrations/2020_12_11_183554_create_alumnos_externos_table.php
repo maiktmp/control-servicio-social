@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaboratoristasTable extends Migration
+class CreateAlumnosExternosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateLaboratoristasTable extends Migration
      */
     public function up()
     {
-        Schema::create('laboratoristas', function (Blueprint $table) {
+        Schema::create('alumnos_externos', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('user_id')->constrained();
+            $table->string('matricula',20);
+            $table->string('procedencia',255);
+            $table->string('periodo',255);
+            $table->string('no_of',100);
             $table->integer('status');
+            $table->foreignid('user_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateLaboratoristasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laboratoristas');
+        Schema::dropIfExists('alumnos_externos');
     }
 }

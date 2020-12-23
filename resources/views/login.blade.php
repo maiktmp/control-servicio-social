@@ -1,6 +1,7 @@
 @extends("template.main")
 
 @section("content")
+
     <div class="row">
         <div class="col text-center text-center">
             <h2>Identifícate</h2>

@@ -7,6 +7,9 @@ use App\Models\AlumnosInternos;
 use App\Models\Rol;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use App\Http\Requests\InternalCreatePostRequest;
+use App\Http\Requests\InternalUpdatePostRequest;
+
 
 class InternalStudentController extends Controller
 {
@@ -23,11 +26,10 @@ class InternalStudentController extends Controller
         return view("admin.internal_student.create");
     }
 
-    public function createPost(Request $req)
+    public function createPost(InternalCreatePostRequest $req)
     {
         try {
             \DB::beginTransaction();
-
             $user = new Users();
             $user->fill($req->input("user"));
             $user->password = bcrypt($user->password);
@@ -55,7 +57,7 @@ class InternalStudentController extends Controller
         return view("admin.internal_student.update", ["student" => $student]);
     }
 
-    public function updatePost(Request $req, $studentId)
+    public function updatePost(InternalUpdatePostRequest $req, $studentId)
     {
         try {
             \DB::beginTransaction();
@@ -90,5 +92,4 @@ class InternalStudentController extends Controller
         $student->save();
         return response()->redirectToRoute("admin_internal_student_index");
     }
-
 }

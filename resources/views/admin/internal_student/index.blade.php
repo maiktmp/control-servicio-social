@@ -26,7 +26,7 @@
                         <th scope="col">No. Control</th>
                         <th scope="col">Carrera</th>
                         <th scope="col">Semestre</th>
-                        <th scope="col">Número de oficio</th>
+                        <th scope="col">Folio de servicio social</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{$student->user->nombre}} {{$student->user->ap_p}} {{$student->user->ap_m}}</td>
                             <td>{{$student->no_ctl}}</td>
-                            <td>{{$student->carrera}}</td>
+                            <td>{{$student->carrera->nombre}}</td>
                             <td>{{$student->semestre}}</td>
                             <td>{{$student->no_of}}</td>
                             <td class="text-center d-flex justify-content-center">

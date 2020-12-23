@@ -1,6 +1,5 @@
 @extends("template.main")
 
-
 @push("scripts")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
             integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
@@ -17,7 +16,7 @@
         $(document).ready(function ($q) {
 
             $("#btn-register").click(function (e){
-                // https://api.jquery.com/jquery.get/
+                
                 $.get(' {{route("student_register_hour")}} ', function (response){
                    console.log(response)
                     Swal.fire(
@@ -27,11 +26,9 @@
                     )
                 });
             });
-            // Establece la fecha de hoy
+            // fecha
             $("#current-date").html(moment().format('MMMM Do YYYY'));
-
-
-            // Establece el reloj
+            // hora
             $("#current-hour").html(moment().format('h:mm:ss a'));
             setInterval(
                 function () {
@@ -41,13 +38,13 @@
             )
         });
     </script>
-
 @endpush
+
 @section("content")
 
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Bienvenido {{Auth::user()->nombre}}</h1>
+            <h1>Bienvenid@ {{Auth::user()->nombre}}</h1>
         </div>
     </div>
 

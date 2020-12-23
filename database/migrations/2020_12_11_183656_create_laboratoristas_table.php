@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportesExternosTable extends Migration
+class CreateLaboratoristasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateReportesExternosTable extends Migration
      */
     public function up()
     {
-        Schema::create('reportes_externos', function (Blueprint $table) {
+        Schema::create('laboratoristas', function (Blueprint $table) {
             $table->id();
-            $table->string('fecha',20);
-            $table->integer('horas');
-            $table->integer('hr_totales');
-            $table->foreignid('id_ext')->references('id')->on('alumnos_externos');
+            $table->foreignid('user_id')->constrained();
             $table->integer('status');
-            $table->timestamps();;
+            $table->timestamps();
         });
     }
 
@@ -31,6 +28,7 @@ class CreateReportesExternosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reportes_externos');
+        Schema::dropIfExists('laboratoristas');
     }
 }
+

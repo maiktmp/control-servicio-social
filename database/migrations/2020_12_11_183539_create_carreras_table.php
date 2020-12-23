@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlumnosExternosTable extends Migration
+class CreateCarrerasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateAlumnosExternosTable extends Migration
      */
     public function up()
     {
-        Schema::create('alumnos_externos', function (Blueprint $table) {
+        Schema::create('carreras', function (Blueprint $table) {
             $table->id();
-            $table->string('matricula',20);
-            $table->string('procedencia',255);
-            $table->string('no_of',100);
+            $table->string('nombre',255);
+            $table->string('cordinador');
             $table->integer('status');
-            $table->foreignid('user_id')->constrained();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateAlumnosExternosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumnos_externos');
+        Schema::dropIfExists('carreras');
     }
 }

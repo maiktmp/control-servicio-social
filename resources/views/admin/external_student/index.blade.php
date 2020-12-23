@@ -25,7 +25,7 @@
                         <th scope="col">Nombre Completo</th>
                         <th scope="col">Matrícula</th>
                         <th scope="col">Procedencia</th>
-                        <th scope="col">Número de oficio</th>
+                        <th scope="col">Folio de servicio social</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
