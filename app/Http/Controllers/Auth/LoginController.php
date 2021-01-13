@@ -61,29 +61,34 @@ class LoginController extends Controller
             'status' => 1
         ];
 
-        $userattempt= Users::whereUsername($request->input('username'))->first();
-        
-        /*
-        if ($userattempt ==! null ) {
+        $userattempt = Users::whereStatus(true)
+            ->whereUsername($request->input('username'))
+            ->first();
+
+
+        if ($userattempt == !null) {
             switch ($userattempt->tipo_usr) {
                 case Rol::Externo:
                     $external = AlumnosExternos::whereUserId($userattempt->id)->first();
-                    if(!$external->active) return back()
-                ->withErrors((['email' => 'Usuario deshabilitado']))
-                ->withInput();
+                    if ($external->status != true) return back()
+                        ->withErrors((['email' => 'Usuario deshabilitado']))
+                        ->withInput();
+                    break;
                 case Rol::Interno:
                     $internal = AlumnosInternos::whereUserId($userattempt->id)->first();
-                    if(!$internal->active) return back()
-                ->withErrors((['email' => 'Usuario deshabilitado']))
-                ->withInput();
+                    if ($internal->status != true) return back()
+                        ->withErrors((['email' => 'Usuario deshabilitado']))
+                        ->withInput();
+                    break;
                 case Rol::Laboratorista:
                     $labo = Laboratoristas::whereUserId($userattempt->id)->first();
-                    if(!$labo->active) return back()
-                ->withErrors((['email' => 'Usuario deshabilitado']))
-                ->withInput();
+                    if ($labo->status != true) return back()
+                        ->withErrors((['email' => 'Usuario deshabilitado']))
+                        ->withInput();
+                    break;
             }
         }
-        */ 
+
 
         if (Auth::attempt($loginParams, $remember)) {
             $user = Auth::user();

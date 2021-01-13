@@ -64,7 +64,7 @@
 
             <label>Usuario</label>
             <input type="text"
-                   name="username" value='{{$labo->user->username ?? old("labo.username")}}'
+                   name="user[username]" value='{{$labo->user->username ?? old("labo.username")}}'
                    class="form-control"
                    required>
 
@@ -75,23 +75,23 @@
         <div class="form-group">
             <label>Contraseña</label>
             <input type="password"
-                   name="password"
+                   name="user[password]"
                    class="form-control">
-            @isset($student)
+            @isset($labo)
                 <small id="passwordHelpBlock" class="form-text text-muted">
                     Si desea conservar la contraseña, deje en blanco este campo.
                 </small>
             @endisset
         </div>
     </div>
-    
+
     <div class="col-12 col-md-4">
         <div class="form-group">
             <label>Confirmar Contraseña</label>
             <input type="password"
-                   name="password_confirmation"
+                   name="user[password_confirmation]"
                    class="form-control">
-            @isset($user)
+            @isset($labo)
                 <small id="passwordHelpBlock" class="form-text text-muted">
                     Si desea conservar la contraseña, deje en blanco este campo.
                 </small>

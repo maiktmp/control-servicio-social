@@ -47,6 +47,10 @@ class AlumnosExternos extends Model
         "no_of",
     ];
 
+    protected $appends = [
+        "total_hours"
+    ];
+
     public function user()
     {
         return $this->belongsTo(
@@ -54,5 +58,28 @@ class AlumnosExternos extends Model
             "user_id",
             "id"
         );
+    }
+
+    public function disponibilidad()
+    {
+        return $this->hasMany(
+            DispExternos::class,
+            "id_ext",
+            "id"
+        );
+    }
+
+    public function carrera()
+    {
+        return $this->belongsTo(
+            Carreras::class,
+            "carrera_id",
+            "id"
+        );
+    }
+
+    public function getTotalHoursAttribute()
+    {
+        return RegistrosExternos::whereIdExt($this->id)->sum("hr_totales");
     }
 }

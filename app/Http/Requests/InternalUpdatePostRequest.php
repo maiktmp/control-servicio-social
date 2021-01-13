@@ -28,7 +28,7 @@ class InternalUpdatePostRequest extends FormRequest
             'no_of' => 'max:4|unique:alumnos_externos,no_of,' . $this->studentId,
             'no_of' => 'unique:alumnos_internos,no_of,'. $this->studentId,
             'username' => 'min:4|unique:users,username,'. $this->userID,
-            'password' => 'confirmed',
+            'user.password' => 'confirmed',
         ];
     }
     public function messages(){
@@ -40,7 +40,7 @@ class InternalUpdatePostRequest extends FormRequest
             'no_of.unique'=> 'El folio ya ha sido asignado a otro alumno',
             'username.unique'=> 'El nombre de usuario insertado está en uso',
             'username.min'=> 'El nombre de usuario es muy corto, introduzca al menos 4 caracteres',
-            'password.confirmed'=> 'La contraseña no coincide',
+            'user.password.confirmed'=> 'La contraseña no coincide',
         ];
     }
 }

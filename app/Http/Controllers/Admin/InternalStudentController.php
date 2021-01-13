@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AlumnosInternos;
+use App\Models\DispInternos;
 use App\Models\Rol;
 use App\Models\Users;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\InternalCreatePostRequest;
 use App\Http\Requests\InternalUpdatePostRequest;
@@ -90,6 +92,36 @@ class InternalStudentController extends Controller
         $student = AlumnosInternos::find($studentId);
         $student->status = false;
         $student->save();
+        $student->user->status = false;
+        $student->user->save();
         return response()->redirectToRoute("admin_internal_student_index");
     }
+
+    public function showAvailability($studentId)
+    {
+        $student = AlumnosInternos::find($studentId);
+        $disponibilidad = $student->disponibilidad()
+            ->orderByRaw('FIELD(dia, "Lunes", "Martes", "Míercoles","Jueves","Viernes")')
+            ->get();
+        return view("admin.internal_student.availability", ["student" => $student, "disponibilidad" => $disponibilidad]);
+    }
+
+    public function createAvailability(Request $request, $studentId)
+    {
+        $startTime = Carbon::createFromFormat("h:i A", $request->input("hr_ent"));
+        $endTime = Carbon::createFromFormat("h:i A", $request->input("hr_sal"));
+        if ($endTime->lessThan($startTime)) {
+            return back()
+                ->withInput()
+                ->withErrors(["general" => "La hora de  salida debe ser superior a la de entrada"]);
+        }
+        $disp = new DispInternos();
+        $disp->fill($request->all());
+        $disp->id_int = $studentId;
+        $disp->status = true;
+        $disp->save();
+
+        return back();
+    }
 }
+

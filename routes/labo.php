@@ -18,7 +18,6 @@ Route::get('/', function () {
 })->name("home_labo");
 
 
-
 // ===================
 //      Internal Student
 // ===================
@@ -76,3 +75,8 @@ Route::post(
     '/{registerId}/check-register',
     'CheckController@checkRegister'
 )->name("labo_check_register");
+
+Route::post(
+    '/{registerId}/update-hours',
+    'CheckController@updateHours'
+)->name("labo_check_update_hours");

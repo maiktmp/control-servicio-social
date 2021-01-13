@@ -15,9 +15,9 @@ class CreateDispExternosTable extends Migration
     {
         Schema::create('disp__externos', function (Blueprint $table) {
             $table->id();
-            $table->integer('dia');
-            $table->integer('hr_ent');
-            $table->integer('hr_sal');
+            $table->string('dia');
+            $table->string('hr_ent');
+            $table->string('hr_sal');
             $table->foreignid('id_ext')->references('id')->on('alumnos_externos');
             $table->integer('status');
             $table->timestamps();

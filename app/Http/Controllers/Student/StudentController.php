@@ -9,6 +9,8 @@ use App\Models\AlumnosExternos;
 use App\Models\AlumnosInternos;
 use App\Models\RegistrosExternos;
 use App\Models\RegistrosInternos;
+use App\Models\ReportesExternos;
+use App\Models\ReportesInternos;
 use App\Models\Rol;
 use App\User;
 use Carbon\Carbon;
@@ -38,6 +40,7 @@ class StudentController extends Controller
             $lastRegister->hr_sal = Carbon::now();
             $lastRegister->hr_totales = Carbon::now()->diffInHours($lastRegister->hr_ent);
             $lastRegister->save();
+//            $this->generateInternalReport($internal->id, Carbon::now()->diffInHours($lastRegister->hr_ent));
             return response()->json([
                 "message" => "Registraste " . Carbon::now()->diffInHours($lastRegister->hr_ent) . " horas"
             ]);
@@ -60,14 +63,15 @@ class StudentController extends Controller
         $external = AlumnosExternos::whereUserId(\Auth::id())->first();
 
         $lastRegister = RegistrosExternos::whereHrSal("00:00:00")
-        ->whereIdExt($external->id)
-        ->latest("id")
-        ->first();
+            ->whereIdExt($external->id)
+            ->latest("id")
+            ->first();
 
         if ($lastRegister !== null) {
             $lastRegister->hr_sal = Carbon::now();
             $lastRegister->hr_totales = Carbon::now()->diffInHours($lastRegister->hr_ent);
             $lastRegister->save();
+//            $this->generateExternalReport($external->id, Carbon::now()->diffInHours($lastRegister->hr_ent));
             return response()->json([
                 "message" => "Registraste " . Carbon::now()->diffInHours($lastRegister->hr_ent) . " horas"
             ]);
@@ -83,6 +87,28 @@ class StudentController extends Controller
                 "message" => "Registro de entrada realizado satisfactoriamente, por favor cierra sesión"
             ]);
         }
+    }
+
+    public function generateInternalReport($studentId, $hours)
+    {
+        $report = new ReportesInternos();
+        $report->id_int = $studentId;
+        $report->horas = $hours;
+        $report->fecha = Carbon::now();
+        $report->status = 1;
+        $report->hr_totales = ReportesInternos::whereIdInt($studentId)->sum("horas") + $hours;
+        $report->save();
+    }
+
+    public function generateExternalReport($studentId, $hours)
+    {
+        $report = new ReportesExternos();
+        $report->id_ext = $studentId;
+        $report->horas = $hours;
+        $report->fecha = Carbon::now();
+        $report->status = 1;
+        $report->hr_totales = ReportesInternos::whereIdInt($studentId)->sum("horas") + $hours;
+        $report->save();
     }
 
 }

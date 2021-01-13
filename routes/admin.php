@@ -130,6 +130,16 @@ Route::get(
     'InternalStudentController@delete'
 )->name("admin_internal_student_delete");
 
+Route::get(
+    'internal-student/{studentId}/availability',
+    'InternalStudentController@showAvailability'
+)->name("admin_internal_availability");
+
+Route::post(
+    'internal-student/{studentId}/availability',
+    'InternalStudentController@createAvailability'
+)->name("admin_internal_create_availability");
+
 
 // ===================
 //      External Student
@@ -164,6 +174,17 @@ Route::get(
     'external-student/{studentId}/delete',
     'ExternalStudentController@delete'
 )->name("admin_external_student_delete");
+
+Route::get(
+    'external-student/{studentId}/availability',
+    'ExternalStudentController@showAvailability'
+)->name("admin_external_availability");
+
+Route::post(
+    'external-student/{studentId}/availability',
+    'ExternalStudentController@createAvailability'
+)->name("admin_external_create_availability");
+
 
 // ===================
 //      Laboratoristas
@@ -217,3 +238,17 @@ Route::post(
     '/{registerId}/check-register',
     'CheckController@checkRegister'
 )->name("admin_check_register");
+
+Route::post(
+    '/{registerId}/update-hours',
+    'CheckController@updateHours'
+)->name("admin_check_update_hours");
+
+// ===================
+//      Report
+// ===================
+
+Route::post(
+    'generate-report',
+    'ReportController@generateReport'
+)->name("admin_generate_report");

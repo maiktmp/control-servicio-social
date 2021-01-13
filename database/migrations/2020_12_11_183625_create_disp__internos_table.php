@@ -15,9 +15,9 @@ class CreateDispInternosTable extends Migration
     {
         Schema::create('disp__internos', function (Blueprint $table) {
             $table->id();
-            $table->integer('dia');
-            $table->integer('hr_ent');
-            $table->integer('hr_sal');
+            $table->string('dia');
+            $table->string('hr_ent');
+            $table->string('hr_sal');
             $table->foreignid('id_int')->references('id')->on('alumnos_internos');
             $table->integer('status');
             $table->timestamps();

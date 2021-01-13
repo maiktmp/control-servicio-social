@@ -85,9 +85,11 @@ class LaboratoristaController extends Controller
 
     public function delete($laboId)
     {
-        $labo =Laboratoristas::find($labotId);
+        $labo =Laboratoristas::find($laboId);
         $labo->status = false;
         $labo->save();
+        $labo->user->status = false;
+        $labo->user->save();
         return response()->redirectToRoute("admin_laboratorista_index");
     }
 

@@ -50,7 +50,26 @@
                         }).done(function (data) {
                         window.location.reload()
                     });
-                    ;
+                });
+            });
+
+            $(".btn-hours").click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr("href")
+                $('#modal-hours').modal('show')
+                //console.log(url)
+                $("#btn-send-hour").click(function () {
+                    $.post(
+                        url,
+                        {
+                            hours: $("#text-hours").val(),
+                            "_token": "{{ csrf_token() }}",
+                        }).done(function (data) {
+                            // IF OK
+                        window.location.reload()
+                        //ELSE
+                            //
+                    });
                 });
             });
         });
@@ -97,6 +116,14 @@
                                    data-placement="top"
                                    title="Agregar comentario"
                                    aria-pressed="true"> <i class="material-icons md-18">feedback</i> </a>
+
+                                <a href="{{route("admin_check_update_hours",["registerId"=>$register->id, "type"=>$type])}}"
+                                   class="btn btn-outline-warning text-center d-flex justify-content-center m-1 btn-hours"
+                                   role="button"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="Editar Horas"
+                                   aria-pressed="true"> <i class="material-icons md-18">create</i> </a>
 
                                 @if($register->check === null)
                                     <a href="{{route("admin_check_register", ["registerId" => $register->id, "type"=>$type])}}"
@@ -157,6 +184,36 @@
                 </div>
                 <div class="modal-footer">
                     <button id="btn-send" type="button" class="btn btn-primary">Guardar comentario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade"
+         id="modal-hours"
+         tabindex="-1"
+         role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modificar horas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Horas</label>
+                                <input class="form-control" id="text-hours" type="number"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-send-hour" type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>

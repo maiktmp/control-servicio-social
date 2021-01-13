@@ -24,8 +24,8 @@ class LaboCreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|unique:users,username|min:4',
-            'password' => 'required|min:5|confirmed',
+            'user.username' => 'required|unique:users,username|min:4',
+            'user.password' => 'required|min:5|confirmed',
         ];
     }
 

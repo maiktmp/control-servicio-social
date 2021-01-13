@@ -16,9 +16,11 @@ class CheckController extends Controller
     {
         if ($req->get("type", "internal") === "internal") {
             $registers = RegistrosInternos::whereStatus(true)
+                ->latest()
                 ->paginate(15);
         } else {
             $registers = RegistrosExternos::whereStatus(true)
+                ->latest()
                 ->paginate(15);
         }
 
@@ -52,6 +54,19 @@ class CheckController extends Controller
         if ($register->check === false) {
             $register->hr_totales = 0;
         }
+        $register->save();
+        return response()->json(["success" => true]);
+    }
+
+    public function updateHours(Request $req, $registerId)
+    {
+        if ($req->get("type", "internal") === "internal") {
+            $register = RegistrosInternos::find($registerId);
+        } else {
+            $register = RegistrosExternos::find($registerId);
+        }
+        //
+        $register->hr_totales = $req->input("hours");
         $register->save();
         return response()->json(["success" => true]);
     }

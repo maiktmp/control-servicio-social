@@ -38,4 +38,7 @@ Route::get(
     'Auth\LoginController@logout'
 )->name('logout');
 
-
+Route::view(
+    '/report',
+    'general.report.report'
+)->name('report');

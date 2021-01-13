@@ -45,6 +45,10 @@ class AlumnosInternos extends Model
         "carrera_id"
     ];
 
+    protected $appends = [
+        "total_hours"
+    ];
+
     public function user()
     {
         return $this->belongsTo(
@@ -53,6 +57,7 @@ class AlumnosInternos extends Model
             "id"
         );
     }
+
     public function carrera()
     {
         return $this->belongsTo(
@@ -60,5 +65,19 @@ class AlumnosInternos extends Model
             "carrera_id",
             "id"
         );
+    }
+
+    public function disponibilidad()
+    {
+        return $this->hasMany(
+            DispInternos::class,
+            "id_int",
+            "id"
+        );
+    }
+
+    public function getTotalHoursAttribute()
+    {
+        return RegistrosInternos::whereIdInt($this->id)->sum("hr_totales");
     }
 }

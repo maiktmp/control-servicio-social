@@ -32,4 +32,11 @@ use Illuminate\Database\Eloquent\Model;
 class DispInternos extends Model
 {
     protected $table = "disp__internos";
+    protected $fillable = [
+        "dia",
+        "hr_ent",
+        "hr_sal",
+        "id_int",
+        "status",
+    ];
 }

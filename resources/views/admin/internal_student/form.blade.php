@@ -15,7 +15,7 @@
 
             <label>Nombre</label>
             <input type="text"
-                   name="user[nombre]" 
+                   name="user[nombre]"
                    value='{{$student->user->nombre ?? old("user.nombre")}}'
                    class="form-control"
                    required>
@@ -130,7 +130,7 @@
 
             <label>Usuario</label>
             <input type="text"
-                   name="username" value='{{$student->user->username ?? old("user.username")}}'
+                   name="user[username]" value='{{$student->user->username ?? old("user.username")}}'
                    class="form-control"
                    required>
 
@@ -141,7 +141,7 @@
         <div class="form-group">
             <label>Contraseña</label>
             <input type="password"
-                   name="password"
+                   name="user[password]"
                    class="form-control">
             @isset($student)
                 <small id="passwordHelpBlock" class="form-text text-muted">
@@ -150,12 +150,12 @@
             @endisset
         </div>
     </div>
-    
+
     <div class="col-12 col-md-4">
         <div class="form-group">
             <label>Confirmar Contraseña</label>
             <input type="password"
-                   name="password_confirmation"
+                   name="user[password_confirmation]"
                    class="form-control">
             @isset($user)
                 <small id="passwordHelpBlock" class="form-text text-muted">

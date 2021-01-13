@@ -123,7 +123,7 @@
         <div class="form-group">
             <label>Contraseña</label>
             <input type="password"
-                   name="password"
+                   name="user[password]"
                    class="form-control">
             @isset($student)
                 <small id="passwordHelpBlock" class="form-text text-muted">
@@ -132,12 +132,12 @@
             @endisset
         </div>
     </div>
-    
+
     <div class="col-12 col-md-4">
         <div class="form-group">
             <label>Confirmar Contraseña</label>
             <input type="password"
-                   name="password_confirmation"
+                   name="user[password_confirmation]"
                    class="form-control">
             @isset($user)
                 <small id="passwordHelpBlock" class="form-text text-muted">
