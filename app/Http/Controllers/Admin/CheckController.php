@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Departamentos;
 use App\Models\RegistrosExternos;
 use App\Models\RegistrosInternos;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CheckController extends Controller
@@ -66,9 +67,16 @@ class CheckController extends Controller
             $register = RegistrosExternos::find($registerId);
         }
         //
+        $total = $register->hr_ent->diffInHours($register->hr_sal);
+        if ($req->input("hours") > $total) {
+            return response()->json([
+                "success" => false,
+                "message" => "No puede registrar más horas de las que hizo el alumno"
+            ], 503);
+        }
+
         $register->hr_totales = $req->input("hours");
         $register->save();
         return response()->json(["success" => true]);
     }
-
 }

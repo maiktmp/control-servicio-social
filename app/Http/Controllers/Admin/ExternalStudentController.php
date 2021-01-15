@@ -126,4 +126,11 @@ class ExternalStudentController extends Controller
         return back();
     }
 
+    public function deleteAvailability($availabilityId)
+    {
+        $disp = DispExternos::find($availabilityId);
+        $disp->delete();
+        return back();
+    }
+
 }

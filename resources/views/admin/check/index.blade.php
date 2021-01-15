@@ -40,12 +40,16 @@
                 e.preventDefault();
                 var url = $(this).attr("href")
                 $('#modal-comment').modal('show')
-                console.log(url)
+
                 $("#btn-send").click(function () {
+                    var value = $("#text-comments").val().trim();
+                    if (value === "" || value === null || value === undefined) {
+                        return
+                    }
                     $.post(
                         url,
                         {
-                            comment: $("#text-comments").val(),
+                            comment: value,
                             "_token": "{{ csrf_token() }}",
                         }).done(function (data) {
                         window.location.reload()
@@ -58,17 +62,24 @@
                 var url = $(this).attr("href")
                 $('#modal-hours').modal('show')
                 //console.log(url)
+                $("#dvi-hour-error").html("<div></div>");
                 $("#btn-send-hour").click(function () {
+                    var value = $("#text-hours").val().trim();
+                    if (value === "" || value === null || value === undefined) {
+                        return
+                    }
                     $.post(
                         url,
                         {
-                            hours: $("#text-hours").val(),
+                            hours: value,
                             "_token": "{{ csrf_token() }}",
                         }).done(function (data) {
-                            // IF OK
                         window.location.reload()
-                        //ELSE
-                            //
+                    }).fail(function (resp, xhr) {
+                        var error = " <div class=\"alert alert-danger\" role=\"alert\">\n" +
+                            "" + resp.responseJSON.message +
+                            "</div>"
+                        $("#dvi-hour-error").html(error);
                     });
                 });
             });
@@ -204,10 +215,18 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-12" id="dvi-hour-error">
+
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-12">
                             <div class="form-group">
                                 <label>Horas</label>
-                                <input class="form-control" id="text-hours" type="number"></input>
+                                <input class="form-control"
+                                       id="text-hours"
+                                       type="number"
+                                       min="1"></input>
                             </div>
                         </div>
                     </div>

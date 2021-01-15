@@ -140,6 +140,10 @@ Route::post(
     'InternalStudentController@createAvailability'
 )->name("admin_internal_create_availability");
 
+Route::get(
+    'internal-student/{availabilityId}/delete-availability',
+    'InternalStudentController@deleteAvailability'
+)->name("admin_internal_delete_availability");
 
 // ===================
 //      External Student
@@ -185,6 +189,11 @@ Route::post(
     'ExternalStudentController@createAvailability'
 )->name("admin_external_create_availability");
 
+
+Route::get(
+    'external-student/{availabilityId}/delete-availability',
+    'ExternalStudentController@deleteAvailability'
+)->name("admin_external_delete_availability");
 
 // ===================
 //      Laboratoristas

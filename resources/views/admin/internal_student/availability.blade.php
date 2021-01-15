@@ -112,7 +112,16 @@
                         <td>{{$disp->dia}}</td>
                         <td>{{$disp->hr_ent}}</td>
                         <td>{{$disp->hr_sal}}</td>
-                        <td></td>
+                        <td style="width: 5%">
+                            <a href="{{route("admin_internal_delete_availability",["availabilityId"=>$disp->id])}}"
+                               class="btn btn-outline-danger text-center d-flex justify-content-center m-1"
+                               role="button"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Eliminar"
+                               aria-pressed="true"> <i class="material-icons md-18">delete</i> </a>
+
+                        </td>
                     </tr>
                 @empty
                     <tr>

@@ -123,5 +123,12 @@ class InternalStudentController extends Controller
 
         return back();
     }
+
+    public function deleteAvailability($availabilityId)
+    {
+        $disp = DispInternos::find($availabilityId);
+        $disp->delete();
+        return back();
+    }
 }
 
